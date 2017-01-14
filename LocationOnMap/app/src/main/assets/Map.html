@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Simple markers</title>
+  <style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+    #map {
+    height: 100%;
+    }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+var myLatLng;
+var map;
+var marker;
+var image = 'pupu.png';
+var image1 = 'mylocation.png';
+
+function initMap() {
+  myLatLng = {lat: 24.970142, lng: 121.265867};
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: myLatLng
+  });
+
+  marker = new google.maps.Marker({
+  });
+}
+
+function centerAt(latitude,longitude){
+
+myLatLng = new google.maps.LatLng(latitude,longitude);
+marker.setMap(null);
+map.panTo(myLatLng);
+marker = new google.maps.Marker({
+position: myLatLng,
+map:map,
+icon: image
+});
+}
+
+function centerAtt(latitude,longitude){
+
+myLatLng = new google.maps.LatLng(latitude,longitude);
+map.panTo(myLatLng);
+marker = new google.maps.Marker({
+position: myLatLng,
+map:map,
+icon: image1
+});
+}
+
+
+    </script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtRvdIAV7-ykjrdiiKUNNWSheT3fJ-d00&signed_in=true&callback=initMap"></script>
+</body>
+</html>
